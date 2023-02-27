@@ -1,16 +1,17 @@
 # magnit_test_app
 
-A new Flutter project.
+### Для запуска необходимо сгенерировать все необходимые файлы и получить зависимости.
 
-## Getting Started
+Сделать это можно при помощи команды:
+```shell
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+Это сгенерирует адаптеры для Hive и `.g.dart`, `.freezed.dart`.
 
-This project is a starting point for a Flutter application.
+### Откуда берутся данные?
+В директории `internal/utils` есть утилита `HiveInitializer`, которая генерирует все необходимые для демонстрации работы приложения данные.
+Хоть генерация происходит с достаточно большим запасом, сущности характеристик могут иметь одинаковые значения поля `weight`, по этому при возникновении ошибок, рекомендуется очистить бокс в `Hive` и повторить генерацию.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Идеология проекта
+При написании проекта были применены все аспекты чистой архитектуры. Так как приложение простое, проект разделен на слои, которые слабосвязаны друг с другом.
